@@ -24,7 +24,7 @@ The latest image can be pulled from quay.io:
 The image can be run to display the configuration
 
     podman run                             \
-      --detach                             \
+      --it                                 \
       --name pdns_server                   \
       --publish 53:5353/tcp                \
       --publish 53:5353/udp                \
