@@ -28,9 +28,12 @@ COPY conf.d/pdns.conf /etc/powerdns/pdns.conf
 
 # Create config folder and adapt permissions
 RUN mkdir -p /etc/powerdns/pdns.d                       \
+    && mkdir /var/run/pdns                              \
+    && mkdir /var/lib/powerdns                          \
     && chown -R pdns:pdns /etc/powerdns                 \
     && chmod 0755 /etc/powerdns /etc/powerdns/pdns.d    \
-    && chmod 0600 /etc/powerdns/pdns.conf
+    && chmod 0600 /etc/powerdns/pdns.conf               \
+    && chown pdns:pdns /var/run/pdns
 
 # Create mount points with the specified names and mark them as holding external provided volumes
 VOLUME [ "/etc/powerdns/pdns.d" ]
