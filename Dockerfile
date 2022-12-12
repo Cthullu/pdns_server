@@ -29,7 +29,7 @@ COPY conf.d/pdns.conf /etc/powerdns/pdns.conf
 # Create config folder and adapt permissions
 RUN mkdir -p /etc/powerdns/pdns.d                       \
     && mkdir /var/run/pdns                              \
-    && mdkir /var/lib/powerdns                          \
+    && mkdir /var/lib/powerdns                          \
     && chown -R pdns:pdns /etc/powerdns                 \
     && chmod 0755 /etc/powerdns /etc/powerdns/pdns.d    \
     && chmod 0600 /etc/powerdns/pdns.conf               \
