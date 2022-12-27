@@ -38,11 +38,8 @@ RUN mkdir -p /etc/powerdns/pdns.d                       \
 # Create mount points with the specified names and mark them as holding external provided volumes
 VOLUME [ "/etc/powerdns/pdns.d" ]
 
-# Switch to dedicated pdns user
-USER pdns
-
 # Documentation purpose: Ports the container listens on
-EXPOSE 5353/tcp 5353/udp 8081/tcp
+EXPOSE 53/tcp 53/udp 8081/tcp
 
 # Specify a entrypoint. CMD parsed will be apended
 ENTRYPOINT [ "/usr/sbin/pdns_server", "--config-dir=/etc/powerdns" ]

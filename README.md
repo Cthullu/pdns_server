@@ -13,6 +13,16 @@ provided to the `/etc/powerdns/pdns.d` folder.
 As the image runs the pdns_server as a non priviledged user (named `pdns`), the default
 ports for the server to listen for DNS-queries is changed to `5353`.
 
+## Changes starting with release 4.7.2-b2
+
+Starting from release `4.7.2-b2` the image will no longer switch to the pdns system-user and
+execute the PowerDNS server unpriviledged. Instead, the server will be started as root and
+the priviledges of PowerDNS are dropped after parsing the configuration and initializing the
+server process.
+
+This also effects the exposed ports, which changed from `5353/tcp` and `5353/udp` to
+`53/tcp` and `53/udp`.
+
 ## Get the image
 
 The latest image can be pulled from quay.io:
@@ -26,8 +36,8 @@ The image can be run to display the configuration
     podman run                             \
       --it                                 \
       --name pdns_server                   \
-      --publish 53:5353/tcp                \
-      --publish 53:5353/udp                \
+      --publish 53:53/tcp                \
+      --publish 53:53/udp                \
       --publish 8081:8081/tcp              \
       quay.io/cthullu/pdns_server --config
 
@@ -38,8 +48,8 @@ custom configuration snippets:
     podman run                                   \
       --detach                                   \
       --name pdns_server                         \
-      --publish 53:5353/tcp                      \
-      --publish 53:5353/udp                      \
+      --publish 53:53/tcp                      \
+      --publish 53:53/udp                      \
       --publish 8081:8081/tcp                    \
       --volume my-config:/etc/powerdns/pdns.d    \
       quay.io/cthullu/pdns_server
