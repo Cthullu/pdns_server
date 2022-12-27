@@ -1,4 +1,4 @@
-# cthullu/bind9
+# cthullu/pdns_server
 
 This repository contains a [PowerDNS][1] server image based on Alpine Linux.
 The goal of this project is to provide a very small container image which contains the
