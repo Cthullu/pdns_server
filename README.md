@@ -58,6 +58,6 @@ docker run                                   \
   --publish 8081:8081/tcp                    \
   --volume my-config:/etc/powerdns/pdns.d    \
   quay.io/cthullu/pdns_server
-~~~s
+~~~
 
 [1]: https://www.powerdns.com
