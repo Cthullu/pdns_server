@@ -36,12 +36,11 @@ docker pull quay.io/cthullu/pdns_server
 The image can be run to display the configuration
 
 ~~~shell
-docker run                             \
-  --it                                 \
-  --name pdns_server                   \
-  --publish 53:53/tcp                  \
-  --publish 53:53/udp                  \
-  --publish 8081:8081/tcp              \
+docker run                              \
+  --interactive                         \
+  --name pdns_server                    \
+  --rm                                  \
+  --tty                                 \
   quay.io/cthullu/pdns_server --config
 ~~~
 
