@@ -27,31 +27,37 @@ This also effects the exposed ports, which changed from `5353/tcp` and `5353/udp
 
 The latest image can be pulled from quay.io:
 
-    docker pull quay.io/cthullu/pdns_server
+~~~shell
+docker pull quay.io/cthullu/pdns_server
+~~~
 
 ## Start the container
 
 The image can be run to display the configuration
 
-    podman run                             \
-      --it                                 \
-      --name pdns_server                   \
-      --publish 53:53/tcp                  \
-      --publish 53:53/udp                  \
-      --publish 8081:8081/tcp              \
-      quay.io/cthullu/pdns_server --config
+~~~shell
+docker run                             \
+  --it                                 \
+  --name pdns_server                   \
+  --publish 53:53/tcp                  \
+  --publish 53:53/udp                  \
+  --publish 8081:8081/tcp              \
+  quay.io/cthullu/pdns_server --config
+~~~
 
 In order to start the server, at least one backend has to be configured inside a
 configuration snippet. The following example shows how to execute the container with
 custom configuration snippets:
 
-    podman run                                   \
-      --detach                                   \
-      --name pdns_server                         \
-      --publish 53:53/tcp                        \
-      --publish 53:53/udp                        \
-      --publish 8081:8081/tcp                    \
-      --volume my-config:/etc/powerdns/pdns.d    \
-      quay.io/cthullu/pdns_server
+~~~shell
+docker run                                   \
+  --detach                                   \
+  --name pdns_server                         \
+  --publish 53:53/tcp                        \
+  --publish 53:53/udp                        \
+  --publish 8081:8081/tcp                    \
+  --volume my-config:/etc/powerdns/pdns.d    \
+  quay.io/cthullu/pdns_server
+~~~s
 
 [1]: https://www.powerdns.com
