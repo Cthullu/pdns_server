@@ -1,5 +1,5 @@
 # Set base base image for following commands
-FROM alpine:3.18.4
+FROM alpine:3.19.0
 
 # Set environment variables
 ENV LC_ALL C.UTF-8
